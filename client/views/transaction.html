@@ -1,0 +1,49 @@
+<template name="transactions">
+
+    <button data-action="add-transaction">Add Transaction</button>
+    <a href="{{pathFor 'createTransaction'}}">Create</a>
+
+    {{> transactionGrid}}
+</template>
+
+<template name="transactionGrid">
+    <table>
+        <thead>
+            <tr>
+                <th>text</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#each transactions}}
+            <tr>
+                <td>{{text}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="transactionEditor">
+
+    <div>
+        <span>Text</span>
+        <input type="text" data-bind="text">
+    </div>
+
+    <div>
+        <span>Type</span>
+        <input type="text" data-bind="type">
+    </div>
+
+    <div>
+        <span>Category</span>
+        <input type="text" data-bind="category">
+    </div>
+
+    <div>
+        <button data-action="save">{{saveText}}</button>
+    </div>
+
+
+
+</template>
