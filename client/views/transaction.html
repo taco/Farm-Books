@@ -11,12 +11,20 @@
         <thead>
             <tr>
                 <th>text</th>
+                <th>type</th>
+                <th>category</th>
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {{#each transactions}}
             <tr>
                 <td>{{text}}</td>
+                <td>{{type}}</td>
+                <td>{{category}}</td>
+                <td>
+                    <a href="/transactions/edit/{{_id}}">Edit</a>
+                </td>
             </tr>
         {{/each}}
         </tbody>
@@ -24,21 +32,22 @@
 </template>
 
 <template name="transactionEditor">
-
+    {{#with transaction}}
     <div>
         <span>Text</span>
-        <input type="text" data-bind="text">
+        <input type="text" data-bind="text" value="{{text}}">
     </div>
 
     <div>
         <span>Type</span>
-        <input type="text" data-bind="type">
+        <input type="text" data-bind="type" value="{{type}}">
     </div>
 
     <div>
         <span>Category</span>
-        <input type="text" data-bind="category">
+        <input type="text" data-bind="category" value="{{category}}">
     </div>
+    {{/with}}
 
     <div>
         <button data-action="save">{{saveText}}</button>

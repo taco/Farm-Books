@@ -1,37 +1,5 @@
-
-// Template.hello.greeting = function () {
-//   return "Welcome to Farm-Books.";
-// };
-
-// Template.hello.transactions = function () {
-//   return Transactions.find({});
-// };
-
-// Template.hello.events({
-//   'click input' : function () {
-//     // template data, if any, is available in 'this'
-//     if (typeof console !== 'undefined')
-//       console.log("You pressed the button");
-
-//     Transactions.insert({text: prompt('Text?')});
-
-//     //$('body').html(Meteor.render(Template.howdy));
-//   }
-// });
-
-
-ViewManager = {
-  loadTemplate: function (template) {
-    var html;
-
-    if (typeof template === 'string') template = Template[template];
-
-    if (!template) throw 'Could not loadTemplate';
-
-    html = Meteor.render(template);
-
-    $('.content').html(html);
-  }
+Subscriptions = {
+  transactions: Meteor.subscribe('transactions')
 };
 
 Router.configure({
@@ -39,10 +7,6 @@ Router.configure({
   notFoundTemplate: 'notFound',
   loadingTemplate: 'loading'
 });
-
-Subscriptions = {
-  items: Meteor.subscribe('transactions')
-};
 
 Router.map(function () {
   
@@ -61,7 +25,19 @@ Router.map(function () {
     controller: 'TransactionsController',
     action: 'create'
   });
+
+  this.route('transactionEditor', {
+    path: '/transactions/edit/:_id',
+    controller: 'TransactionsController',
+    action: 'edit'
+  });
 });
+
+
+
+
+
+/* TRANSACTIONS CONTROLLER */
 
 TransactionsController = RouteController.extend({
   template: 'transactions',
@@ -77,8 +53,18 @@ TransactionsController = RouteController.extend({
   },
 
   create: function () {
-    Session.set('transactionId', null);
+    Session.set('transactionsId', null);
+    Session.set('transactionsRecord', null);
+    this.render('transactionEditor');
+  },
+
+  edit: function () {
+    var record = Transactions.findOne(this.params._id);
+    console.log('_id', this.params._id, record);
+
+    Session.set('transactionsId', this.params._id);
+    Session.set('transactionsRecord', record);
     this.render('transactionEditor');
   }
 
-})
+});

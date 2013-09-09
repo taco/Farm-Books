@@ -1,40 +1,13 @@
-/* TRANSACTIONS */
 
-// var Transaction = {
-//     record: null,
 
-//     load: function (transactionId) {
-//         if (!transactionId) transactionId = Session.get('transactionId');
-//         else Session.get('transactionId', transactionId);
 
-//         Transaction.record = Transactions.findOne({_id: transactionId});
-        
-//         return Transaction.record;
-//     },
-
-//     insert: function (data) {
-//         if (!data) data = {};
-        
-//         data.date = new Date();
-
-//         Session.set('transactionId', Transactions.insert(data));
-
-//         return Transaction.load();
-//     },
-
-//     isCreate: function () {
-//         return !Session.get('transactionId');
-//     }
-// };
 
 var t = new Model('Transactions');
 
 Template.transactions.events({
-    // 'click button[data-action="add-transaction"]': function () {
-    //     debugger;
-    //     Session.set('transactionId', null);
-    //     ViewManager.loadTemplate('transactionEditor');
-    // }
+    'click button[data-action="add-transaction"]': function () {
+        Router.go('')
+    }
 });
 
 
@@ -50,6 +23,10 @@ Template.transactionGrid.transactions = function () {
 Template.transactionEditor.helpers({
     saveText: function () {
         return t.phantom() ? 'Create' : 'Update';
+    },
+    transaction: function () {
+        debugger
+        return t.record;
     }
 });
 
@@ -77,24 +54,3 @@ Template.transactionEditor.events({
     }
 });
 
-
-
-window.TransactionsController = RouteController.extend({
-  template: 'transactions',
-
-  waitOn: Subscriptions['transactions'],
-
-  data: function () {
-    return { transactions: Transactions.find() };
-  },
-
-  show: function () {
-    this.render('transactions');
-  },
-
-  create: function () {
-    Session.set('transactionId', null);
-    this.render('transactionEditor');
-  }
-
-})
