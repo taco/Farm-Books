@@ -24,3 +24,7 @@
 client/.DS_Store
 
 client/.DS_Store
+
+.ssh/config
+
+config
