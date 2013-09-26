@@ -2,3 +2,4 @@ iron-router
 /fs
 /assert
 /blocking
+/s3
