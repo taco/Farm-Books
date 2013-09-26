@@ -1,5 +1,5 @@
 Meteor.startup(function () {
-    // code to run on server at startup
+
 });
 
 Meteor.publish('transactions', function (id) {
@@ -7,3 +7,11 @@ Meteor.publish('transactions', function (id) {
         ? Transactions.find()
         : Transactions.fineOne(id);
 });
+
+Meteor.methods({
+    s3Complete:function(url, context){
+        console.log('Add '+url+' to the id of '+context);
+    }
+});
+
+//console.log('end of shit');

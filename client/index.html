@@ -34,13 +34,23 @@
   <h1>Welcome to Farm-Books!</h1>
   <p>This will be the Home/Dashboard!</p>
   a{{loginButtons}}b
-
   <a href="{{pathFor 'transactions'}}">View Transactions</a>
+
+
+  <br><br>
+
+  {{#S3 callback="s3Complete"}}
+      <input type="file">
+  {{/S3}}
+
 </template>
+
+
 
 <template name="loading">
   <h1>Loading...</h1>
 </template>
+
 
 <template name="notFound">
   <h1>Not Found!</h1>
