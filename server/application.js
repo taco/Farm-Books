@@ -1,10 +1,12 @@
 Meteor.startup(function () {
+
+});
+
     Meteor.call('S3config', {
         key: process.env['S3_ACCESS'],
         secret: process.env['S3_SECRET'],
         bucket: 'fhfarm-books'
     });
-});
 
 Meteor.publish('transactions', function (id) {
     return (!id)
