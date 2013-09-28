@@ -1,4 +1,7 @@
 {
+  "meteor": {
+    "tag": "v0.6.5.1"
+  },
   "packages": {
     "iron-router": {},
     "fs": {},
