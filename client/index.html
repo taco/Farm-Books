@@ -39,9 +39,25 @@
 
   <br><br>
 
-  {{#S3 callback="s3Complete"}}
-      <input type="file">
-  {{/S3}}
+  <form id="file_upload" action="https://fhfarm-books.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="key" value="uploads/${filename}">
+      <input type="hidden" name="AWSAccessKeyId" value="AKIAIDJPJPEUAKB6BKLQ"> 
+      <input type="hidden" name="acl" value="public-read"> 
+      <input type="hidden" name="success_action_status" value="200">
+      <input type="hidden" name="policy" value="eyJleHBpcmF0aW9uIjoiMjAwMTQtMDEtMDFUMDA6MDA6MDBaIiwiY29uZGl0aW9ucyI6W3siYnVja2V0IjoiZmhmYXJtLWJvb2tzIn0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCJ1cGxvYWRzLyJdLHsiYWNsIjoicHVibGljLXJlYWQifSx7InN1Y2Nlc3NfYWN0aW9uX3JlZGlyZWN0IjoiaHR0cDovL2xvY2FsaG9zdC8ifSxbInN0YXJ0cy13aXRoIiwiJENvbnRlbnQtVHlwZSIsIiJdLFsiY29udGVudC1sZW5ndGgtcmFuZ2UiLDBdXX0=">
+      <input type="hidden" name="signature" value="ChAcWrFfNCd1D2n8Najl5xfjLcA=">
+
+      <div class="fileupload-content">
+        <div class="fileupload-progress"></div>
+      </div>
+
+      <div class="fileupload">
+        <label class="fileinput-button">
+          <span>Upload Document</span>
+          <input type="file" name="file">
+        </label>
+      </div>
+    </form> 
 
 </template>
 

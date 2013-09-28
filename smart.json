@@ -4,7 +4,6 @@
   },
   "packages": {
     "iron-router": {},
-    "fs": {},
-    "s3": {}
+    "jquery-ui": {}
   }
 }

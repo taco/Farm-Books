@@ -1,12 +1,13 @@
 Meteor.startup(function () {
-
+    // if (AwsS3) {
+    //     console.log('yes');
+    // } else {
+    //     console.log('no');
+    // }
+    // 
+    Meteor.call('doThings');
 });
 
-    Meteor.call('S3config', {
-        key: process.env['S3_ACCESS'],
-        secret: process.env['S3_SECRET'],
-        bucket: 'fhfarm-test1'
-    });
 
 Meteor.publish('transactions', function (id) {
     return (!id)
