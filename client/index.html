@@ -39,13 +39,38 @@
 
   <br><br>
 
+  {{#s3 callback="things"}}
+
+    <input type="file">
+
+  {{/s3}}
+
+  <br><br>
+
+  <textarea id="policy" style="width: 500px; height: 150px">{
+  "expiration": "20014-01-01T12:00:00.000Z",
+  "conditions": [
+    {"bucket": "fhfarm-books" },
+    ["starts-with", "$key", "uploads/"],
+    {"acl": "public-read" },
+    ["starts-with", "$Content-Type", "image/"],
+  ]
+}</textarea>
+
+  <button id="sign">Sign</button>
+
   <form id="file_upload" action="https://fhfarm-books.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
-      <input type="hidden" name="key" value="uploads/${filename}">
-      <input type="hidden" name="AWSAccessKeyId" value="AKIAIDJPJPEUAKB6BKLQ"> 
-      <input type="hidden" name="acl" value="public-read"> 
-      <input type="hidden" name="success_action_status" value="200">
-      <input type="hidden" name="policy" value="eyJleHBpcmF0aW9uIjoiMjAwMTQtMDEtMDFUMDA6MDA6MDBaIiwiY29uZGl0aW9ucyI6W3siYnVja2V0IjoiZmhmYXJtLWJvb2tzIn0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCJ1cGxvYWRzLyJdLHsiYWNsIjoicHVibGljLXJlYWQifSx7InN1Y2Nlc3NfYWN0aW9uX3JlZGlyZWN0IjoiaHR0cDovL2xvY2FsaG9zdC8ifSxbInN0YXJ0cy13aXRoIiwiJENvbnRlbnQtVHlwZSIsIiJdLFsiY29udGVudC1sZW5ndGgtcmFuZ2UiLDBdXX0=">
-      <input type="hidden" name="signature" value="ChAcWrFfNCd1D2n8Najl5xfjLcA=">
+      <input type="text" name="key" value="uploads/${filename}" style="width:500px;">
+      <br />
+<input type="text" name="acl" value="public-read" />
+<br />
+<input type="text" name="content-type" value="image/jpeg" />
+      <br />
+      <input type="text" name="AWSAccessKeyId" value="AKIAIDJPJPEUAKB6BKLQ" style="width:500px;">  
+      <br />
+      <input type="text" name="policy" value="" style="width:500px;">
+      <br />
+      <input type="text" name="signature" value="" style="width:500px;">
 
       <div class="fileupload-content">
         <div class="fileupload-progress"></div>
@@ -58,6 +83,17 @@
         </label>
       </div>
     </form> 
+
+    <button id="upload">Upload</button>
+
+
+      <br />
+      <input type="text" name="success_action_status" value="200" style="width:500px;">
+      <br />
+      <input type="text" name="policy1" value="ewogICJleHBpcmF0aW9uIjogIjIwMDE0LTAxLTAxVDEyOjAwOjAwLjAwMFoiLAogICJjb25kaXRpb25zIjogWwogICAgeyJidWNrZXQiOiAiZmhmYXJtLWJvb2tzIiB9LAogICAgWyJzdGFydHMtd2l0aCIsICIka2V5IiwgInVwbG9hZHMvIl0sCiAgICB7ImFjbCI6ICJwdWJsaWMtcmVhZCIgfSwKICAgIFsic3RhcnRzLXdpdGgiLCAiJENvbnRlbnQtVHlwZSIsICJpbWFnZS8iXSwKICBdCn0=" style="width:500px;">
+      
+      <br />
+      <input type="text" name="signature1" value="ocDX84anrebYmdMi5OKqNLfEorI=" style="width:500px;">
 
 </template>
 
