@@ -1,1 +1,6 @@
 iron-router
+/fs
+/assert
+/blocking
+/s3
+/jquery-ui
