@@ -30,12 +30,20 @@
 </template> 
 
 
+<template name="auth">
+  {{loginButtons}}
+</template>
+
 
 <template name="home">
   <h1>Welcome to Farm-Books!</h1>
   <p>This will be the Home/Dashboard!</p>
-  a{{loginButtons}}b
-  <a href="{{pathFor 'transactions'}}">View Transactions</a>
+  {{#if currentUser}}
+  <a href="{{pathFor 'transactions'}}">View Transactions</a>{{currentUser.profile.name}}
+  {{else}}
+    No user logged in.
+    {{loginButtons}}
+  {{/if}}
 
 
   <br><br>
@@ -95,15 +103,11 @@
       
       <br />
       <input type="text" name="signature1" value="ocDX84anrebYmdMi5OKqNLfEorI=" style="width:500px;">
-
 </template>
-
-
 
 <template name="loading">
   <h1>Loading...</h1>
 </template>
-
 
 <template name="notFound">
   <h1>Not Found!</h1>

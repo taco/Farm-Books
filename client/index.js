@@ -57,7 +57,6 @@ Template.home.events({
   }
 });
 
-
 /* TRANSACTIONS CONTROLLER */
 
 TransactionsController = RouteController.extend({

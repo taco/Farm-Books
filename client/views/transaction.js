@@ -25,7 +25,6 @@ Template.transactionEditor.helpers({
         return t.phantom() ? 'Create' : 'Update';
     },
     transaction: function () {
-        debugger
         return t.record;
     }
 });

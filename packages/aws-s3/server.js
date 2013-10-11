@@ -1,5 +1,11 @@
-var crypto = Npm.require('crypto');
+var crypto = Npm.require('crypto'),
+    io = Npm.require('socket.io');
 
+
+io.configure(function () {
+    io.set('transports', ['xhr-polling']);
+    io.set('polling duration', 10);
+});
 
 var signPolicy = function (policy) {
     return crypto.createHmac('sha1', process.env['S3_SECRET'])

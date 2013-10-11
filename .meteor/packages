@@ -6,8 +6,5 @@
 standard-app-packages
 preserve-inputs
 iron-router
-accounts-google
 accounts-ui-unstyled
-aws-s3
-jquery
-jquery-ui
+accounts-google
