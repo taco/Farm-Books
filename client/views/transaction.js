@@ -3,19 +3,19 @@
  * Transaction Definition
  * - _id            (string)
  * - _entryDate     (date)
- * - date           (date)
- * - user           (string)
+ * - _user          (string)
  * - id             (number)
  * - vendor         (string)
  * - amount         (number)
+ * - date           (date)
  * - category       (string)
- * - horses         (string[])
  * - description    (string)
+ * - horses         (string[])
  * - receipts       (object[])
  */
 
 
-var t = new Model('Transactions');
+var t = new Transaction();
 
 Template.transactions.events({
     'click button[data-action="add-transaction"]': function () {
@@ -38,13 +38,20 @@ Template.transactionEditor.helpers({
         return t.phantom() ? 'Create' : 'Update';
     },
     transaction: function () {
-        return t.record;
+        return t.get();
+    }
+});
+
+Template.transactionEditorHeader.helpers({
+    transaction: function () {
+        //debugger;
+        return t.get();
     }
 });
 
 Template.transactionEditor.created = function () {
 //    t = new Model(Transactions);
-    t.init();
+    //t.init();
 };
 
 Template.transactionEditor.events({
@@ -60,7 +67,7 @@ Template.transactionEditor.events({
         t.save();
         t.cleanup();
 
-        t = new Model('Transactions');
+        t = new Transaction();
 
         Router.go('transactions');
     }

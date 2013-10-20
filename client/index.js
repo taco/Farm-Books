@@ -76,29 +76,33 @@ TransactionsController = RouteController.extend({
   },
 
   create: function () {
-    Session.set('transactionsId', null);
-    Session.set('transactionsRecord', null);
-    this.render('transactionEditor');
+    
+    var t = new Transaction(),
+      record = t.insert();
+
+    Router.go('/transactions/edit/' + record._id);
+    
   },
 
   edit: function () {
     var record = Transactions.findOne(this.params._id);
-    console.log('_id', this.params._id, record);
+//    console.log('_id', this.params._id, record);
 
     Session.set('transactionsId', this.params._id);
     Session.set('transactionsRecord', record);
     this.render('transactionEditor');
+    this.render('transactionEditorHeader', {to: 'header'});
   }
 
 });
 
 Meteor.methods({
   things: function (url) {
-    console.log('THINGS URL', url);
+//    console.log('THINGS URL', url);
   }
 })
 
 $(document).ready(function () {
-  console.log($('#file_upload'));
+  //console.log($('#file_upload'));
 
 })

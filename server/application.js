@@ -13,8 +13,16 @@ Meteor.publish('transactions', function (id) {
 
 Transactions.allow({
     insert: function (userId, doc) {
-        console.log(userId, doc);
+        console.log('INSERT', userId, doc);
         return true;
+    },
+    update: function (userId, doc) {
+    	console.log('UPDATE', userId, doc);
+    	return true;
+    },
+    remove: function () {
+    	return false;
     }
+
 });
 

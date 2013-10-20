@@ -28,3 +28,4 @@ client/.DS_Store
 .ssh/config
 
 config
+.sass-cache/

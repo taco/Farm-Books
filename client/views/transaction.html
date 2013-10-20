@@ -31,28 +31,59 @@
     </table>
 </template>
 
+<template name="transactionEditorHeader">
+    {{#with transaction}}
+        <p>Transaction #{{id}}</p>
+    {{/with}}
+</template>
+
 <template name="transactionEditor">
     {{#with transaction}}
     <from role="form">
         <div class="form-group">
             <label for="inputVendor">Vendor</label>
-            <input type="text" id="inputVendor" data-bind="text" value="{{vendor}}" class="form-control">
+            <input type="text" id="inputVendor" data-bind="text" value="{{vendor}}" class="form-control input-sm">
         </div>
 
         <div class="form-group">
-            <label for="input"></label>
-            <input type="text" data-bind="type" value="{{type}}" class="form-control">
+            <label for="inputAmount">Amount</label>
+            <input type="text" id="inputAmount" data-bind="amount" value="{{amount}}" class="form-control input-sm">
         </div>
 
         <div class="form-group">
-            <span>Category</span>
-            <input type="text" data-bind="category" value="{{category}}" class="form-control">
+            <label for="inputDate">Date</label>
+            <input type="text" id="inputDate" data-bind="date" value="{{date}}" class="form-control input-sm">
         </div>
+
+
+
+        <div class="form-group">
+            <label for="inputCategory">Category</label>
+            <input type="text" id="inputCategory" data-bind="category" value="{{category}}" class="form-control input-sm">
+        </div>
+
+        <div class="form-group">
+            <label for="inputDescription">Description</label>
+            <textarea id="inputDescription" data-bind="description" class="form-control input-sm">{{description}}</textarea>
+        </div>
+
+        
         {{/with}}
 
         <div>
-            <button data-action="save">{{saveText}}</button>
+            <button data-action="save" class="btn btn-primary btn-large" type="button">{{saveText}}</button>
         </div>
+
+        <h2>Shit</h2>
+        <h2>Shit</h2>
+        <h2>Shit</h2>
+        <h2>Shit</h2>
+        <h2>Shit</h2>
+        <h2>Shit</h2>
+        <h2>Shit</h2>
+        <h2>Shit</h2>
+        <h2>Shit</h2>
+        <h2>Shit</h2>
 
     </form>
 

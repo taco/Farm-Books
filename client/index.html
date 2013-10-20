@@ -1,6 +1,7 @@
 <head>
   <title>Farm-Books</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Farm-Books">
@@ -36,8 +37,16 @@
 </body>
 
 
-<template name="layout"> 
-  {{yield}}
+<template name="layout">
+  <div id="header" class="palette palette-wet-asphalt">
+    {{yield 'header'}}
+  </div>
+  <div id="content">
+    {{yield}}
+  </div>
+  <div id="footer">
+    {{yield 'footer'}}
+  </div>
 </template> 
 
 

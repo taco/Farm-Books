@@ -1,0 +1,63 @@
+@import "compass/css3";
+
+// html, body {
+// 	height: 100%;
+// 	overflow: hidden;
+// 	width: 100%;
+// }
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	// height: 100%;
+	// overflow: none;
+	// width: 100%;
+	padding: 0 !important;
+}
+
+//     -webkit-overflow-scrolling: touch
+// }
+
+body {
+	padding: 0 !important;
+}
+
+#content {
+	//position: fixed;
+	//top: 0;
+	//left: 0;
+	//height: 100%;
+	//width: 100%;
+	//border: 51px solid red;
+	//overflow: auto;
+	//padding: 500px 20px 500px 20px;
+}
+
+#content {
+    // //height: 100%;
+    // margin-bottom: 200px;
+    // overflow: scroll;
+    // overflow-scrolling: auto;
+    // padding: 50px 20px;
+    // -webkit-overflow-scrolling: touch
+
+}
+
+#header, #footer {
+	//background: black;
+	height: 50px;
+	left: 0;
+	position: fixed;
+	width: 100%;
+	z-index: 1
+}
+
+#header {
+	top: 0;
+}
+
+#footer {
+	bottom: 0;
+}

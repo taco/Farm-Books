@@ -1,3 +1,4 @@
+//console.log ('LOAD MODEL JS')
 window.Model = function (collectionKey) {
     this.collectionKey = collectionKey;
     this.record = null;
@@ -21,6 +22,13 @@ window.Model.prototype = {
 
         if (!this.record) this.record = {};
 
+        if (!this.record.id) this.saveId();
+
+        return this.record;
+    },
+
+    get: function () {
+        if (!this.record) this.init();
         return this.record;
     },
 
@@ -43,12 +51,40 @@ window.Model.prototype = {
         return this.load();
     },
 
+    saveId: function () {
+        var last;
+
+        
+
+        last = this.collection().findOne({id: {$gt: 1}}, {sort: {id: -1}});
+
+        if (!last) {
+            console.log('no last');
+            return;
+        }
+
+        console.log('found last!!!', last.id);
+
+        this.record.id = last.id + 1;
+        this.update();
+    },
+
     set: function (field, value) {
         this.record[field] = value;
     },
 
     update: function () {
-        return this.collection().update({_id: this.record._id}, this.record);
+        return this.collection().update(this.record._id, this.buildSet());
+    },
+
+    buildSet: function () {
+        var set = {};
+        
+        _.each(this.fields, function (field) {
+            set[field] = this.record[field]
+        }, this);
+
+        return {$set: set};
     },
 
     save: function () {
@@ -67,3 +103,20 @@ window.Model.prototype = {
         return !Session.get(this.key());
     }
 };
+
+
+window.Transaction = function () {
+    this.collectionKey = 'Transactions';
+    this.record = null;
+    this.fields = [
+        'id',
+        'vendor',
+        'amount',
+        'date',
+        'category',
+        'description'
+    ]
+};
+
+window.Transaction.prototype = new window.Model();
+window.Transaction.prototype.constructor = window.Transaction;
