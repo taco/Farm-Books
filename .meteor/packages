@@ -6,5 +6,5 @@
 standard-app-packages
 preserve-inputs
 iron-router
-accounts-ui-unstyled
 accounts-google
+accounts-ui
