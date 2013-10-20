@@ -10,7 +10,7 @@ Router.configure({
 
 Router.map(function () {
   
-  this.route('home', {
+  this.route('login', {
     path: '/'
   });
 
@@ -32,6 +32,9 @@ Router.map(function () {
     action: 'edit'
   });
 });
+
+
+//console.log('CURRENT', Router.current().path);
 
 
 Template.home.events({

@@ -1,0 +1,8 @@
+<template name="login">
+	<h1>Farm-Books</h1>
+	{{#if currentUser}}
+		<a href="{{pathFor 'transactions'}}">View Transactions</a>{{currentUser.profile.name}}
+	{{else}}
+		<button class="btn btn-large btn-primary" type="button">Login with Google</button>
+	{{/if}}
+</template>

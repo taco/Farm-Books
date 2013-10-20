@@ -33,26 +33,27 @@
 
 <template name="transactionEditor">
     {{#with transaction}}
-    <div>
-        <span>Text</span>
-        <input type="text" data-bind="text" value="{{text}}">
-    </div>
+    <from role="form">
+        <div class="form-group">
+            <label for="inputVendor">Vendor</label>
+            <input type="text" id="inputVendor" data-bind="text" value="{{vendor}}" class="form-control">
+        </div>
 
-    <div>
-        <span>Type</span>
-        <input type="text" data-bind="type" value="{{type}}">
-    </div>
+        <div class="form-group">
+            <label for="input"></label>
+            <input type="text" data-bind="type" value="{{type}}" class="form-control">
+        </div>
 
-    <div>
-        <span>Category</span>
-        <input type="text" data-bind="category" value="{{category}}">
-    </div>
-    {{/with}}
+        <div class="form-group">
+            <span>Category</span>
+            <input type="text" data-bind="category" value="{{category}}" class="form-control">
+        </div>
+        {{/with}}
 
-    <div>
-        <button data-action="save">{{saveText}}</button>
-    </div>
+        <div>
+            <button data-action="save">{{saveText}}</button>
+        </div>
 
-
+    </form>
 
 </template>

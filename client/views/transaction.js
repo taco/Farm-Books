@@ -1,5 +1,18 @@
 
-
+/**
+ * Transaction Definition
+ * - _id            (string)
+ * - _entryDate     (date)
+ * - date           (date)
+ * - user           (string)
+ * - id             (number)
+ * - vendor         (string)
+ * - amount         (number)
+ * - category       (string)
+ * - horses         (string[])
+ * - description    (string)
+ * - receipts       (object[])
+ */
 
 
 var t = new Model('Transactions');

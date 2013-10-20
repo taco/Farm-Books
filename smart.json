@@ -4,6 +4,7 @@
   },
   "packages": {
     "iron-router": {},
-    "jquery-ui": {}
+    "jquery-ui": {},
+    "flatstrap": {}
   }
 }

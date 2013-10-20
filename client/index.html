@@ -1,37 +1,43 @@
 <head>
   <title>Farm-Books</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Farm-Books">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta http-equiv="cleartype" content="on">
   <link rel="apple-touch-icon" href="https://s3-us-west-2.amazonaws.com/fhfarm-books/img/fhf-touch-icon-iphone.png" />
   <link rel="apple-touch-icon" sizes="76x76" href="https://s3-us-west-2.amazonaws.com/fhfarm-books/img/fhf-touch-icon-ipad.png" />
   <link rel="apple-touch-icon" sizes="120x120" href="https://s3-us-west-2.amazonaws.com/fhfarm-books/img/fhf-touch-icon-iphone-retina.png" />
   <link rel="apple-touch-icon" sizes="152x152" href="https://s3-us-west-2.amazonaws.com/fhfarm-books/img/fhf-touch-icon-ipad-retina.png" />
   <link rel="apple-touch-startup-image" href="https://s3-us-west-2.amazonaws.com/fhfarm-books/img/fhf-touch-icon-ipad-retina.png">
+  <script type="text/javascript" src="http://codeorigin.jquery.com/jquery-2.0.3.js"></script>
 </head>
 
 <body>
+<!--     <div data-role="page" id="login">
+    
+    <div data-role="header">
+      <h1>h</h1>
+    </div>
+
+    <div data-role="content">
+      <p>x</p>
+    </div>
+
+    <div data-role="footer">
+      <h4>f</h4>
+    </div>
+
+  
+  </div> -->
     
 </body>
 
 
 <template name="layout"> 
-  <aside>
-    <!-- render to the sidebar yield -->
-    {{yield 'sidebar'}}
-  </aside>
-
-  <nav>
-    <ul>
-      <!-- static content here like nav links -->
-    </ul>
-  </nav>
-
-  <!-- the main template will be rendered here -->
   {{yield}}
-
-  <footer>
-    <!-- render to the footer yield -->
-    {{yield 'footer'}}
-  </footer>
 </template> 
 
 
