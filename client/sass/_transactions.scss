@@ -1,0 +1,11 @@
+
+.transaction-grid {
+    border-top: 1px solid $color-silver;
+    margin: 0;
+
+    .transaction {
+        background-color: $color-clouds;
+        border-bottom: 1px solid $color-silver;
+        list-style: none;
+    }
+}

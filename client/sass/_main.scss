@@ -1,0 +1,46 @@
+@import "compass/css3";
+
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	padding: 0 !important;
+}
+
+body {
+	padding: 0 !important;
+}
+
+#menu {
+    background: $color-clouds;
+    position: absolute;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    z-index: 10;
+}
+
+#viewport {
+    position: absolute;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    z-index: 11;
+    overflow: hidden;
+}
+
+#content {
+    padding: 50px 0;
+    height: 100vh;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    z-index: 1;
+}

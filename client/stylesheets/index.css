@@ -1,12 +1,130 @@
-/* CSS declarations go here */
+/* line 4, ../sass/_main.scss */
+* {
+  box-sizing: border-box;
+}
 
+/* line 8, ../sass/_main.scss */
+html, body {
+  padding: 0 !important;
+}
 
+/* line 12, ../sass/_main.scss */
+body {
+  padding: 0 !important;
+}
+
+/* line 16, ../sass/_main.scss */
+#menu {
+  background: #ecf0f1;
+  position: absolute;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  z-index: 10;
+}
+
+/* line 26, ../sass/_main.scss */
+#viewport {
+  position: absolute;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  z-index: 11;
+  overflow: hidden;
+}
+
+/* line 36, ../sass/_main.scss */
 #content {
-	margin-top: 20px;
+  padding: 50px 0;
+  height: 100vh;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  z-index: 1;
 }
 
+/* line 6, ../sass/_header.scss */
+#header, #footer {
+  background-color: #34495e;
+  color: white;
+  height: 50px;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  text-transform: uppercase;
+  width: 100%;
+  z-index: 2;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+}
 
+/* line 25, ../sass/_header.scss */
 #header {
-
+  top: 0;
+}
+/* line 28, ../sass/_header.scss */
+#header h1 {
+  font-size: 18px;
+  margin: 0;
+  text-align: center;
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-order: 1;
+  order: 1;
+}
+/* line 39, ../sass/_header.scss */
+#header i {
+  color: #1abc9c;
+}
+/* line 43, ../sass/_header.scss */
+#header .action {
+  height: 50px;
+  padding: 0 14px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-flex: 0 1 auto;
+  flex: 0 1 auto;
+}
+/* line 55, ../sass/_header.scss */
+#header .action-left {
+  background-color: #2c3e50;
+  -webkit-order: 0;
+  order: 0;
+}
+/* line 62, ../sass/_header.scss */
+#header .action-right {
+  -webkit-order: 2;
+  order: 2;
 }
 
+/* line 68, ../sass/_header.scss */
+#footer {
+  bottom: 0;
+}
+/* line 71, ../sass/_header.scss */
+#footer h2 {
+  font-size: 16px;
+  margin: 0;
+  text-align: center;
+}
+
+/* line 2, ../sass/_transactions.scss */
+.transaction-grid {
+  border-top: 1px solid #bdc3c7;
+  margin: 0;
+}
+/* line 6, ../sass/_transactions.scss */
+.transaction-grid .transaction {
+  background-color: #ecf0f1;
+  border-bottom: 1px solid #bdc3c7;
+  list-style: none;
+}

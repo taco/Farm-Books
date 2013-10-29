@@ -38,16 +38,35 @@
 
 
 <template name="layout">
-  <div id="header" class="palette palette-wet-asphalt">
-    {{yield 'header'}}
+  
+  {{> menu}}
+  {{> viewport}}
+
+  
+</template>
+
+<template name="viewport">
+  <div id="viewport">
+    <div id="header">
+      <div class="action action-left" data-action="menu">
+        <i class="fa fa-2x fa-reorder"></i>
+      </div>
+      {{yield 'header'}}
+    </div>
+    <div id="content">
+      {{yield}}
+    </div>
+    <div id="footer">
+      {{yield 'footer'}}
+    </div>
   </div>
-  <div id="content">
-    {{yield}}
+</template>
+
+<template name="menu">
+  <div id="menu">
+    <h1>MENU</h1>
   </div>
-  <div id="footer">
-    {{yield 'footer'}}
-  </div>
-</template> 
+</template>
 
 
 <template name="auth">

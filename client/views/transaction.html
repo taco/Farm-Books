@@ -1,26 +1,45 @@
-<template name="transactions">
 
-    <button data-action="add-transaction">Add Transaction</button>
-    <a href="{{pathFor 'createTransaction'}}">Create</a>
-
-    {{> transactionGrid}}
+<template name="transactionsHeader">
+    <h1>Transactions</h1>
+    <div class="action action-right">
+        <i class="fa fa-2x action action-right fa-plus-square" data-action="create"></i>
+    </div>
 </template>
 
-<template name="transactionGrid">
+<template name="transactionsFooter">
+    <h2>Things</h2>
+</template>
+
+
+
+<template name="transactions">
+    <ul class="transaction-grid">
+    {{#each transactions}}
+        <li class="transaction">
+            <div class="vendor">{{vendor}}</div>
+            <div class="date">{{date}}</div>
+            <div class="category">{{category}}</div>
+            <div class="amount">{{amount}}</div>
+            <div class="description">{{description}}</div>
+        </li>
+    {{/each}}
+    </ul>
+
     <table>
         <thead>
             <tr>
-                <th>text</th>
-                <th>type</th>
-                <th>category</th>
-                <th>actions</th>
+                <th>Vendor</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Category</th>
             </tr>
         </thead>
         <tbody>
         {{#each transactions}}
             <tr>
-                <td>{{text}}</td>
-                <td>{{type}}</td>
+                <td>{{vendor}}</td>
+                <td>{{amount}}</td>
+                <td>{{date}}</td>
                 <td>{{category}}</td>
                 <td>
                     <a href="/transactions/edit/{{_id}}">Edit</a>
@@ -32,9 +51,11 @@
 </template>
 
 <template name="transactionEditorHeader">
+    <div>
     {{#with transaction}}
-        <p>Transaction #{{id}}</p>
+        <span>Transaction #{{id}}</span>
     {{/with}}
+    </div>
 </template>
 
 <template name="transactionEditor">
@@ -42,7 +63,7 @@
     <from role="form">
         <div class="form-group">
             <label for="inputVendor">Vendor</label>
-            <input type="text" id="inputVendor" data-bind="text" value="{{vendor}}" class="form-control input-sm">
+            <input type="text" id="inputVendor" data-bind="vendor" value="{{vendor}}" class="form-control input-sm">
         </div>
 
         <div class="form-group">
@@ -52,10 +73,8 @@
 
         <div class="form-group">
             <label for="inputDate">Date</label>
-            <input type="text" id="inputDate" data-bind="date" value="{{date}}" class="form-control input-sm">
+            <input type="text" id="inputDate" data-bind="date" data-type="date" value="{{parseDate date}}" class="form-control input-sm">
         </div>
-
-
 
         <div class="form-group">
             <label for="inputCategory">Category</label>

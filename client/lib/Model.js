@@ -29,6 +29,8 @@ window.Model.prototype = {
 
     get: function () {
         if (!this.record) this.init();
+        //if (!this.record.id) this.saveId();
+
         return this.record;
     },
 
@@ -54,16 +56,12 @@ window.Model.prototype = {
     saveId: function () {
         var last;
 
-        
-
         last = this.collection().findOne({id: {$gt: 1}}, {sort: {id: -1}});
 
         if (!last) {
-            console.log('no last');
-            return;
+            console.log( 'There are currently records with ID. Making one up out of thing air.');
+            last = {id: 5000};
         }
-
-        console.log('found last!!!', last.id);
 
         this.record.id = last.id + 1;
         this.update();

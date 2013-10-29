@@ -17,18 +17,23 @@
 
 var t = new Transaction();
 
+/* TRANSACTION GRID */
+
 Template.transactions.events({
     'click button[data-action="add-transaction"]': function () {
         Router.go('')
     }
 });
 
-
-/* TRANSACTION GRID */
-
-Template.transactionGrid.transactions = function () {
+Template.transactions.transactions = function () {
     return Transactions.find();
 };
+
+Template.transactionsHeader.events({
+    'click [data-action="create"]': function () {
+        Router.go('/transactions/create');
+    }
+});
 
 
 /* TRANSACTION EDITOR */
@@ -39,6 +44,11 @@ Template.transactionEditor.helpers({
     },
     transaction: function () {
         return t.get();
+    },
+    parseDate: function(d) {
+        //var record = t.get();
+        if (!d || !d.getMonth) d = new Date();
+        return (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear();
     }
 });
 

@@ -3,7 +3,7 @@ Subscriptions = {
 };
 
 Router.configure({
-  layout: 'layout',
+  layout: 'viewport',
   notFoundTemplate: 'notFound',
   loadingTemplate: 'loading'
 });
@@ -60,6 +60,16 @@ Template.home.events({
   }
 });
 
+Template.viewport.events({
+  'click [data-action="menu"]': function() {
+    alert('You clicked the menu!');
+    //$('body').html('<b>NOTHING</b>');
+  },
+  'touchstart [data-action="menu"]': function() {
+    alert('You touched me!');
+  }
+})
+
 /* TRANSACTIONS CONTROLLER */
 
 TransactionsController = RouteController.extend({
@@ -73,6 +83,8 @@ TransactionsController = RouteController.extend({
 
   show: function () {
     this.render('transactions');
+    this.render('transactionsHeader', {to: 'header'});
+    this.render('transactionsFooter', {to: 'footer'});
   },
 
   create: function () {
@@ -80,8 +92,12 @@ TransactionsController = RouteController.extend({
     var t = new Transaction(),
       record = t.insert();
 
-    Router.go('/transactions/edit/' + record._id);
-    
+    t.date = new Date();
+
+    Session.set('transactionsId', record._id);
+    Session.set('transactionsRecord', record);
+    this.render('transactionEditor');
+    this.render('transactionEditorHeader', {to: 'header'});
   },
 
   edit: function () {

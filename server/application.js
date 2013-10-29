@@ -21,7 +21,7 @@ Transactions.allow({
     	return true;
     },
     remove: function () {
-    	return false;
+    	return true;
     }
 
 });
