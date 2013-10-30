@@ -26,6 +26,7 @@ body {
 
 /* line 26, ../sass/_main.scss */
 #viewport {
+  background: #ecf0f1;
   position: absolute;
   height: 100vh;
   left: 0;
@@ -35,7 +36,7 @@ body {
   overflow: hidden;
 }
 
-/* line 36, ../sass/_main.scss */
+/* line 37, ../sass/_main.scss */
 #content {
   padding: 50px 0;
   height: 100vh;
@@ -109,8 +110,9 @@ body {
 /* line 68, ../sass/_header.scss */
 #footer {
   bottom: 0;
+  height: 0;
 }
-/* line 71, ../sass/_header.scss */
+/* line 72, ../sass/_header.scss */
 #footer h2 {
   font-size: 16px;
   margin: 0;
@@ -127,4 +129,27 @@ body {
   background-color: #ecf0f1;
   border-bottom: 1px solid #bdc3c7;
   list-style: none;
+}
+
+/* line 13, ../sass/_transactions.scss */
+.transaction-editor {
+  padding: 10px 15px;
+}
+
+/* line 23, ../sass/_transactions.scss */
+.form-group label {
+  font-size: 18px !important;
+}
+/* line 27, ../sass/_transactions.scss */
+.form-group input {
+  font-size: 18px !important;
+}
+/* line 30, ../sass/_transactions.scss */
+.form-group input[type="number"] {
+  text-align: right;
+}
+/* line 35, ../sass/_transactions.scss */
+.form-group textarea {
+  font-size: 18px !important;
+  height: 260px !important;
 }

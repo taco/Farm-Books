@@ -34,9 +34,6 @@ Router.map(function () {
 });
 
 
-//console.log('CURRENT', Router.current().path);
-
-
 Template.home.events({
   'click #sign': function () {
     var policy = $('#policy').val();
@@ -61,14 +58,17 @@ Template.home.events({
 });
 
 Template.viewport.events({
-  'click [data-action="menu"]': function() {
-    alert('You clicked the menu!');
-    //$('body').html('<b>NOTHING</b>');
-  },
-  'touchstart [data-action="menu"]': function() {
-    alert('You touched me!');
+  'touchstart [data-action="menu"], click [data-action="menu"]': function() {
+    $('#menu').css('z-index', 12);
   }
-})
+});
+
+Template.viewport.rendered = function() {
+  Hammer($('#viewport')).on('swiperight', function() {
+    history.back();
+    //things
+  })
+}
 
 /* TRANSACTIONS CONTROLLER */
 

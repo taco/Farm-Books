@@ -9,3 +9,31 @@
         list-style: none;
     }
 }
+
+.transaction-editor {
+	padding: 10px 15px;
+}
+
+
+
+
+
+
+.form-group {
+	label {
+		font-size: 18px !important;
+	}
+
+	input {
+		font-size: 18px !important;
+
+		&[type="number"] {
+			text-align: right;
+		}
+	}
+
+	textarea {
+		font-size: 18px !important;
+		height: 260px !important;
+	}
+}

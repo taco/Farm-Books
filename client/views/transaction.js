@@ -19,18 +19,12 @@ var t = new Transaction();
 
 /* TRANSACTION GRID */
 
-Template.transactions.events({
-    'click button[data-action="add-transaction"]': function () {
-        Router.go('')
-    }
-});
-
 Template.transactions.transactions = function () {
     return Transactions.find();
 };
 
 Template.transactionsHeader.events({
-    'click [data-action="create"]': function () {
+    'touchstart [data-action="create"], click [data-action="create"]': function () {
         Router.go('/transactions/create');
     }
 });
@@ -54,15 +48,27 @@ Template.transactionEditor.helpers({
 
 Template.transactionEditorHeader.helpers({
     transaction: function () {
-        //debugger;
         return t.get();
     }
 });
 
-Template.transactionEditor.created = function () {
-//    t = new Model(Transactions);
-    //t.init();
-};
+Template.transactionEditorHeader.events({
+    'touchstart [data-action="save"], click [data-action="save"]': function() {
+        var id = t.record._id;
+
+        $('[data-bind]').each(function () {
+            var $this = $(this);
+            t.set($this.attr('data-bind'), $this.val());
+        });
+
+        t.save();
+        t.cleanup();
+
+        t = new Transaction();
+
+        Router.go('transactions');
+    }
+})
 
 Template.transactionEditor.events({
     
