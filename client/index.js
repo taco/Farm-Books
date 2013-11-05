@@ -94,9 +94,9 @@ TransactionsController = RouteController.extend({
 
     t.date = new Date();
 
-    Session.set('transactionsId', record._id);
-    Session.set('transactionsRecord', record);
-    this.render('transactionEditor');
+    //Session.set('transactionsId', record._id);
+    //Session.set('transactionsRecord', record);
+    this.render('transactionEditor', {data: record});
     this.render('transactionEditorHeader', {to: 'header'});
   },
 
@@ -104,9 +104,9 @@ TransactionsController = RouteController.extend({
     var record = Transactions.findOne(this.params._id);
 //    console.log('_id', this.params._id, record);
 
-    Session.set('transactionsId', this.params._id);
-    Session.set('transactionsRecord', record);
-    this.render('transactionEditor');
+    //Session.set('transactionsId', this.params._id);
+    //Session.set('transactionsRecord', record);
+    this.render('transactionEditor', {data: record});
     this.render('transactionEditorHeader', {to: 'header'});
   }
 

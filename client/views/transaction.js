@@ -23,8 +23,15 @@ Template.transactions.transactions = function () {
     return Transactions.find();
 };
 
+Template.transactions.events({
+    'touchend [data-id], click [data-id]': function(e) {
+        var id = $(e.currentTarget).data('id');
+        Router.go('/transactions/edit/' + id);
+    }
+})
+
 Template.transactionsHeader.events({
-    'touchstart [data-action="create"], click [data-action="create"]': function () {
+    'touchend [data-action="create"], click [data-action="create"]': function () {
         Router.go('/transactions/create');
     }
 });

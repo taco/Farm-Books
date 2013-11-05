@@ -15,10 +15,10 @@ window.Model.prototype = {
         return this._collection;
     },
 
-    init: function () {
+    init: function (id) {
         
 
-        this.load();
+        this.load(id);
 
         if (!this.record) this.record = {};
 

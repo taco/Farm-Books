@@ -15,7 +15,8 @@
 <template name="transactions">
     <ul class="transaction-grid">
     {{#each transactions}}
-        <li class="transaction">
+        <li class="transaction" data-id="{{_id}}">
+            <div class="id">{{_id}} #{{id}}</div>
             <div class="vendor">{{vendor}}</div>
             <div class="date">{{date}}</div>
             <div class="category">{{category}}</div>
@@ -51,16 +52,19 @@
 </template>
 
 <template name="transactionEditorHeader">
-    {{#with transaction}}
+    
         <h1>Transaction #{{id}}</h1>
-    {{/with}}
+    
     <div class="action action-right" data-action="save">
         <i class="fa fa-2x fa-save"></i>
     </div>
 </template>
 
 <template name="transactionEditor">
-    {{#with transaction}}
+    
+    <div>
+        {{_id}} #{{id}}
+    </div>
     <div class="transaction-editor">
         <from role="form">
             <div class="form-group">
@@ -89,7 +93,7 @@
             </div>
 
             
-            {{/with}}
+            
 
         </form>
     </div>
