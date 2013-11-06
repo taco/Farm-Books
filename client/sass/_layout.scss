@@ -1,0 +1,140 @@
+$duration: 400ms;
+
+*, *:before, *:after {
+	@include box-sizing(border-box);
+}
+
+html, body {
+	
+	margin: 0;
+	padding: 0 !important;
+	width: 320px;
+	overflow: hidden;
+}
+
+
+.loading {
+	z-index: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(255,255,255,0.4);
+	text-align: center;
+	height: 100vh;
+	width: 320px;
+	opacity: 0;
+
+	@include transition(all 0.2s);
+
+	div {
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin: -50px 0 0 -50px;
+		text-align: center;
+		background: rgba(255,255,255,0.8);
+		border: 2px solid $color-wet-asphalt;
+		padding-top: 17px;
+		@include transform(scale(0));
+		@include border-radius(30px);
+
+	@include transition(all 0.2s);
+	}
+
+	i {
+		-webkit-transform: translate3d(0,0,0);
+	    -webkit-perspective: 1000;
+		-webkit-backface-visibility: hidden;
+
+	}
+
+	&.active {
+		z-index: 100001;
+		opacity: 1;
+
+		div {
+			@include transform(scale(2));
+			//zoom: 2;
+		}
+	}
+}
+
+.viewport {
+    position: absolute;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    width: 320px;
+    z-index: 11;
+    overflow: hidden;
+
+    -webkit-perspective: 1000;
+	-webkit-backface-visibility: hidden;
+
+	@include transform(translate3d(-80px,0,0));
+	-webkit-user-select: none;
+
+    -webkit-transition: -webkit-transform $duration;
+    @include box-shadow(0 0 25px rgba(0,0,0,0.2));
+
+	header {
+		background-color: $color-wet-asphalt;
+		color: white;
+		height: 50px;
+		left: 0;
+		opacity: 0;
+		padding: 0;
+		position: absolute;
+		text-transform: uppercase;
+		text-align: center;
+		width: 100%;
+		z-index: 2;
+
+		@include transition(opacity $duration);
+
+		nav {
+			left: 0;
+			position: absolute;
+			top: 0;
+		}
+
+		aside {
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+	}
+
+	.content {
+		
+		padding: 50px 0 0;
+		height: 100vh;
+		overflow: hidden;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 320px;
+		z-index: 1;
+
+		article {
+			background: $color-clouds;
+			height: 100%;
+			overflow: auto;
+			-webkit-overflow-scrolling: touch;
+		}
+	}
+
+    &.active, &.base {
+    	@include transform(translate3d(0,0,0));
+
+    	header {
+    		opacity: 1;
+    	}
+    }
+
+    &.spawn {
+    	@include transform(translate3d(345px,0,0));
+    }
+}

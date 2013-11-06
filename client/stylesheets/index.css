@@ -1,19 +1,4 @@
-/* line 4, ../sass/_main.scss */
-* {
-  box-sizing: border-box;
-}
-
-/* line 8, ../sass/_main.scss */
-html, body {
-  padding: 0 !important;
-}
-
-/* line 12, ../sass/_main.scss */
-body {
-  padding: 0 !important;
-}
-
-/* line 16, ../sass/_main.scss */
+/* line 3, ../sass/_main.scss */
 #menu {
   background: #ecf0f1;
   position: absolute;
@@ -24,7 +9,7 @@ body {
   z-index: 10;
 }
 
-/* line 26, ../sass/_main.scss */
+/* line 13, ../sass/_main.scss */
 #viewport {
   background: #ecf0f1;
   position: absolute;
@@ -36,7 +21,7 @@ body {
   overflow: hidden;
 }
 
-/* line 37, ../sass/_main.scss */
+/* line 24, ../sass/_main.scss */
 #content {
   padding: 50px 0;
   height: 100vh;
@@ -123,10 +108,10 @@ body {
 .transaction-grid {
   border-top: 1px solid #bdc3c7;
   margin: 0;
+  padding: 0;
 }
-/* line 6, ../sass/_transactions.scss */
+/* line 7, ../sass/_transactions.scss */
 .transaction-grid .transaction {
-  background-color: #ecf0f1;
   border-bottom: 1px solid #bdc3c7;
   list-style: none;
 }
@@ -152,4 +137,173 @@ body {
 .form-group textarea {
   font-size: 18px !important;
   height: 260px !important;
+}
+
+/* line 3, ../sass/_layout.scss */
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 7, ../sass/_layout.scss */
+html, body {
+  margin: 0;
+  padding: 0 !important;
+  width: 320px;
+  overflow: hidden;
+}
+
+/* line 16, ../sass/_layout.scss */
+.loading {
+  z-index: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  height: 100vh;
+  width: 320px;
+  opacity: 0;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+/* line 29, ../sass/_layout.scss */
+.loading div {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -50px 0 0 -50px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid #34495e;
+  padding-top: 17px;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+/* line 46, ../sass/_layout.scss */
+.loading i {
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+}
+/* line 53, ../sass/_layout.scss */
+.loading.active {
+  z-index: 100001;
+  opacity: 1;
+}
+/* line 57, ../sass/_layout.scss */
+.loading.active div {
+  -webkit-transform: scale(2);
+  -moz-transform: scale(2);
+  -ms-transform: scale(2);
+  -o-transform: scale(2);
+  transform: scale(2);
+}
+
+/* line 64, ../sass/_layout.scss */
+.viewport {
+  position: absolute;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  width: 320px;
+  z-index: 11;
+  overflow: hidden;
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(-80px, 0, 0);
+  -moz-transform: translate3d(-80px, 0, 0);
+  -ms-transform: translate3d(-80px, 0, 0);
+  -o-transform: translate3d(-80px, 0, 0);
+  transform: translate3d(-80px, 0, 0);
+  -webkit-user-select: none;
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+/* line 82, ../sass/_layout.scss */
+.viewport header {
+  background-color: #34495e;
+  color: white;
+  height: 50px;
+  left: 0;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+  z-index: 2;
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+/* line 97, ../sass/_layout.scss */
+.viewport header nav {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+/* line 103, ../sass/_layout.scss */
+.viewport header aside {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+/* line 110, ../sass/_layout.scss */
+.viewport .content {
+  padding: 50px 0 0;
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 320px;
+  z-index: 1;
+}
+/* line 121, ../sass/_layout.scss */
+.viewport .content article {
+  background: #ecf0f1;
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+/* line 129, ../sass/_layout.scss */
+.viewport.active, .viewport.base {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+/* line 132, ../sass/_layout.scss */
+.viewport.active header, .viewport.base header {
+  opacity: 1;
+}
+/* line 137, ../sass/_layout.scss */
+.viewport.spawn {
+  -webkit-transform: translate3d(345px, 0, 0);
+  -moz-transform: translate3d(345px, 0, 0);
+  -ms-transform: translate3d(345px, 0, 0);
+  -o-transform: translate3d(345px, 0, 0);
+  transform: translate3d(345px, 0, 0);
 }

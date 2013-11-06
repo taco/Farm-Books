@@ -25,16 +25,22 @@ Template.transactions.transactions = function () {
 
 Template.transactions.events({
     'touchend [data-id], click [data-id]': function(e) {
-        var id = $(e.currentTarget).data('id');
-        Router.go('/transactions/edit/' + id);
+        var $item = $(e.currentTarget),
+            record = Transactions.findOne($item.data('id'));
+
+        Session.set('transaction', record);
+        console.log('setting transaction', record);
+        Controller.push(Template.transactionEditor, 250);
+
+    },
+    'touchend header, click header': function(e) {
+        Controller.pop();
+    },
+
+    'touchstart [data-id]': function(e) {
+
     }
 })
-
-Template.transactionsHeader.events({
-    'touchend [data-action="create"], click [data-action="create"]': function () {
-        Router.go('/transactions/create');
-    }
-});
 
 
 /* TRANSACTION EDITOR */
@@ -44,7 +50,7 @@ Template.transactionEditor.helpers({
         return t.phantom() ? 'Create' : 'Update';
     },
     transaction: function () {
-        return t.get();
+        return Session.get('transaction');
     },
     parseDate: function(d) {
         //var record = t.get();
@@ -52,30 +58,6 @@ Template.transactionEditor.helpers({
         return (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear();
     }
 });
-
-Template.transactionEditorHeader.helpers({
-    transaction: function () {
-        return t.get();
-    }
-});
-
-Template.transactionEditorHeader.events({
-    'touchstart [data-action="save"], click [data-action="save"]': function() {
-        var id = t.record._id;
-
-        $('[data-bind]').each(function () {
-            var $this = $(this);
-            t.set($this.attr('data-bind'), $this.val());
-        });
-
-        t.save();
-        t.cleanup();
-
-        t = new Transaction();
-
-        Router.go('transactions');
-    }
-})
 
 Template.transactionEditor.events({
     
@@ -93,6 +75,11 @@ Template.transactionEditor.events({
         t = new Transaction();
 
         Router.go('transactions');
+    },
+
+    'touchend header, click header': function(e) {
+        Controller.pop();
+        console.log('ckic')
     }
 });
 

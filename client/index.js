@@ -2,39 +2,39 @@ Subscriptions = {
   transactions: Meteor.subscribe('transactions')
 };
 
-Router.configure({
-  layout: 'viewport',
-  notFoundTemplate: 'notFound',
-  loadingTemplate: 'loading'
-});
+// Router.configure({
+//   layout: 'viewport',
+//   notFoundTemplate: 'notFound',
+//   loadingTemplate: 'loading'
+// });
 
-Router.map(function () {
+// Router.map(function () {
   
-  this.route('login', {
-    path: '/'
-  });
+//   this.route('login', {
+//     path: '/'
+//   });
 
-  this.route('transactions', {
-    path: '/transactions',
-    controller: 'TransactionsController',
-    action: 'show'
-  });
+//   this.route('transactions', {
+//     path: '/transactions',
+//     controller: 'TransactionsController',
+//     action: 'show'
+//   });
 
-  this.route('createTransaction', {
-    path: '/transactions/create',
-    controller: 'TransactionsController',
-    action: 'create'
-  });
+//   this.route('createTransaction', {
+//     path: '/transactions/create',
+//     controller: 'TransactionsController',
+//     action: 'create'
+//   });
 
-  this.route('transactionEditor', {
-    path: '/transactions/edit/:_id',
-    controller: 'TransactionsController',
-    action: 'edit'
-  });
-});
+//   this.route('transactionEditor', {
+//     path: '/transactions/edit/:_id',
+//     controller: 'TransactionsController',
+//     action: 'edit'
+//   });
+// });
 
 
-Template.home.events({
+Template.home1.events({
   'click #sign': function () {
     var policy = $('#policy').val();
     Meteor.call('sign', policy, function (e, result) {
@@ -68,49 +68,53 @@ Template.viewport.rendered = function() {
     history.back();
     //things
   })
+
+  console.log('vp rendered');
+
+  Meteor.render(Template.test({name: 'Taco'}));
 }
 
 /* TRANSACTIONS CONTROLLER */
 
-TransactionsController = RouteController.extend({
-  template: 'transactions',
+// TransactionsController = RouteController.extend({
+//   template: 'transactions',
 
-  waitOn: Subscriptions['transactions'],
+//   waitOn: Subscriptions['transactions'],
 
-  data: function () {
-    return { transactions: Transactions.find() };
-  },
+//   data: function () {
+//     return { transactions: Transactions.find() };
+//   },
 
-  show: function () {
-    this.render('transactions');
-    this.render('transactionsHeader', {to: 'header'});
-    this.render('transactionsFooter', {to: 'footer'});
-  },
+//   show: function () {
+//     this.render('transactions');
+//     this.render('transactionsHeader', {to: 'header'});
+//     this.render('transactionsFooter', {to: 'footer'});
+//   },
 
-  create: function () {
+//   create: function () {
     
-    var t = new Transaction(),
-      record = t.insert();
+//     var t = new Transaction(),
+//       record = t.insert();
 
-    t.date = new Date();
+//     t.date = new Date();
 
-    //Session.set('transactionsId', record._id);
-    //Session.set('transactionsRecord', record);
-    this.render('transactionEditor', {data: record});
-    this.render('transactionEditorHeader', {to: 'header'});
-  },
+//     //Session.set('transactionsId', record._id);
+//     //Session.set('transactionsRecord', record);
+//     this.render('transactionEditor', {data: record});
+//     this.render('transactionEditorHeader', {to: 'header'});
+//   },
 
-  edit: function () {
-    var record = Transactions.findOne(this.params._id);
-//    console.log('_id', this.params._id, record);
+//   edit: function () {
+//     var record = Transactions.findOne(this.params._id);
+// //    console.log('_id', this.params._id, record);
 
-    //Session.set('transactionsId', this.params._id);
-    //Session.set('transactionsRecord', record);
-    this.render('transactionEditor', {data: record});
-    this.render('transactionEditorHeader', {to: 'header'});
-  }
+//     //Session.set('transactionsId', this.params._id);
+//     //Session.set('transactionsRecord', record);
+//     this.render('transactionEditor', {data: record});
+//     this.render('transactionEditorHeader', {to: 'header'});
+//   }
 
-});
+// });
 
 Meteor.methods({
   things: function (url) {

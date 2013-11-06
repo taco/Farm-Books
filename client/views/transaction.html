@@ -1,101 +1,89 @@
 
-<template name="transactionsHeader">
-    <h1>Transactions</h1>
-    <div class="action action-right" data-action="create">
-        <i class="fa fa-2x fa-plus-square"></i>
-    </div>
-</template>
-
-<template name="transactionsFooter">
-    <h2>Things</h2>
-</template>
-
 
 
 <template name="transactions">
-    <ul class="transaction-grid">
-    {{#each transactions}}
-        <li class="transaction" data-id="{{_id}}">
-            <div class="id">{{_id}} #{{id}}</div>
-            <div class="vendor">{{vendor}}</div>
-            <div class="date">{{date}}</div>
-            <div class="category">{{category}}</div>
-            <div class="amount">{{amount}}</div>
-            <div class="description">{{description}}</div>
-        </li>
-    {{/each}}
-    </ul>
+    <div class="viewport spawn">
+        <header>
+            Transactions
+            <nav>Menu</nav>
+            <aside>+</aside>
+        </header>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Vendor</th>
-                <th>Amount</th>
-                <th>Date</th>
-                <th>Category</th>
-            </tr>
-        </thead>
-        <tbody>
-        {{#each transactions}}
-            <tr>
-                <td>{{vendor}}</td>
-                <td>{{amount}}</td>
-                <td>{{date}}</td>
-                <td>{{category}}</td>
-                <td>
-                    <a href="/transactions/edit/{{_id}}">Edit</a>
-                </td>
-            </tr>
-        {{/each}}
-        </tbody>
-    </table>
-</template>
+        <div class="content">
+            <article>
 
-<template name="transactionEditorHeader">
-    
-        <h1>Transaction #{{id}}</h1>
-    
-    <div class="action action-right" data-action="save">
-        <i class="fa fa-2x fa-save"></i>
+                <ul class="transaction-grid">
+                {{#each transactions}}
+                    <li class="transaction" data-id="{{_id}}">
+                        <div class="id">{{_id}} #{{id}}</div>
+                        <div class="vendor">{{vendor}}</div>
+                        <div class="date">{{date}}</div>
+                        <div class="category">{{category}}</div>
+                        <div class="amount">{{amount}}</div>
+                        <div class="description">{{description}}</div>
+                    </li>
+                {{/each}}
+                </ul>
+            </article>
+        </div>
     </div>
 </template>
+
 
 <template name="transactionEditor">
+    <div class="viewport spawn">
+        <header>
+            Transactions
+            <nav>
+                <i class="fa fa-angle-left"></i>
+                Menu
+            </nav>
+            <aside>+</aside>
+        </header>
+
+        <div class="content">
+            <article>
+                {{#with transaction}}
     
-    <div>
-        {{_id}} #{{id}}
+                <div>
+                    {{_id}} #{{id}}
+                </div>
+                <div class="transaction-editor">
+                    <from role="form">
+                        <div class="form-group">
+                            <label for="inputVendor">Vendor</label>
+                            <input type="text" id="inputVendor" data-bind="vendor" value="{{vendor}}" class="form-control input-sm1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputAmount">Amount</label>
+                            <input type="number" id="inputAmount" data-bind="amount" value="{{amount}}" class="form-control input-sm1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputDate">Date</label>
+                            <input type="date" id="inputDate" data-bind="date" data-type="date" value="{{parseDate date}}" class="form-control input-sm1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputCategory">Category</label>
+                            <input type="text" id="inputCategory" data-bind="category" value="{{category}}" class="form-control input-sm1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputDescription">Description</label>
+                            <textarea id="inputDescription" data-bind="description" class="form-control input-sm1">{{description}}</textarea>
+                        </div>
+
+                        
+                        
+
+                    </form>
+                </div>
+
+                {{/with}}
+
+            </article>
+        </div>
     </div>
-    <div class="transaction-editor">
-        <from role="form">
-            <div class="form-group">
-                <label for="inputVendor">Vendor</label>
-                <input type="text" id="inputVendor" data-bind="vendor" value="{{vendor}}" class="form-control input-sm1">
-            </div>
-
-            <div class="form-group">
-                <label for="inputAmount">Amount</label>
-                <input type="number" id="inputAmount" data-bind="amount" value="{{amount}}" class="form-control input-sm1">
-            </div>
-
-            <div class="form-group">
-                <label for="inputDate">Date</label>
-                <input type="date" id="inputDate" data-bind="date" data-type="date" value="{{parseDate date}}" class="form-control input-sm1">
-            </div>
-
-            <div class="form-group">
-                <label for="inputCategory">Category</label>
-                <input type="text" id="inputCategory" data-bind="category" value="{{category}}" class="form-control input-sm1">
-            </div>
-
-            <div class="form-group">
-                <label for="inputDescription">Description</label>
-                <textarea id="inputDescription" data-bind="description" class="form-control input-sm1">{{description}}</textarea>
-            </div>
-
-            
-            
-
-        </form>
-    </div>
-
 </template>

@@ -17,14 +17,48 @@
 </head>
 
 <body>
-    
+    <div class="loading">
+      <div>
+        <i class="fa fa-cog fa-spin fa-5x"></i>
+      </div>
+    </div>
+    {{> base}}
+    {{> home}}
+
 </body>
+
+
+
+<template name="base">
+  <div class="viewport base">
+    <header>
+      <nav></nav>
+      <aside></aside>
+    </header>
+    <div class="content">
+      <article>
+      </article>
+    </div>
+  </div>
+</template>
+
+
+
+
+
+
 
 
 <template name="layout">
   
-  {{> viewport}}
+  
 </template>
+
+<template name="test">
+  <p>name: {{name}}</p>
+</template>
+
+
 
 <template name="viewport">
   {{> menu}}
@@ -37,9 +71,6 @@
     </div>
     <div id="content">
       {{yield}}
-    </div>
-    <div id="footer">
-      {{yield 'footer'}}
     </div>
   </div>
 </template>
@@ -56,7 +87,7 @@
 </template>
 
 
-<template name="home">
+<template name="home1">
   <h1>Welcome to Farm-Books!</h1>
   <p>This will be the Home/Dashboard!</p>
   {{#if currentUser}}
