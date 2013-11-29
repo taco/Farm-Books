@@ -5,8 +5,8 @@
     <div class="viewport spawn">
         <header>
             Transactions
-            <nav>Menu</nav>
-            <aside>+</aside>
+            <nav class="left">Menu</nav>
+            <aside><i class="fa fa-plus-square"></i></aside>
         </header>
 
         <div class="content">
@@ -33,12 +33,11 @@
 <template name="transactionEditor">
     <div class="viewport spawn">
         <header>
-            Transactions
-            <nav>
-                <i class="fa fa-angle-left"></i>
-                Menu
+            #{{transaction.id}}
+            <nav class="left">
+                All Trans
             </nav>
-            <aside>+</aside>
+            <aside><i class="fa fa-save"></i></aside>
         </header>
 
         <div class="content">
@@ -74,10 +73,6 @@
                             <label for="inputDescription">Description</label>
                             <textarea id="inputDescription" data-bind="description" class="form-control input-sm1">{{description}}</textarea>
                         </div>
-
-                        
-                        
-
                     </form>
                 </div>
 

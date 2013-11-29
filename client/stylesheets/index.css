@@ -139,14 +139,14 @@
   height: 260px !important;
 }
 
-/* line 3, ../sass/_layout.scss */
+/* line 2, ../sass/_layout.scss */
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 7, ../sass/_layout.scss */
+/* line 6, ../sass/_layout.scss */
 html, body {
   margin: 0;
   padding: 0 !important;
@@ -154,7 +154,7 @@ html, body {
   overflow: hidden;
 }
 
-/* line 16, ../sass/_layout.scss */
+/* line 15, ../sass/_layout.scss */
 .loading {
   z-index: 0;
   position: fixed;
@@ -165,12 +165,12 @@ html, body {
   height: 100vh;
   width: 320px;
   opacity: 0;
-  -webkit-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  transition: all 0.2s;
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  -o-transition: all 300ms;
+  transition: all 300ms;
 }
-/* line 29, ../sass/_layout.scss */
+/* line 28, ../sass/_layout.scss */
 .loading div {
   width: 100px;
   height: 100px;
@@ -192,23 +192,23 @@ html, body {
   -ms-border-radius: 30px;
   -o-border-radius: 30px;
   border-radius: 30px;
-  -webkit-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  transition: all 0.2s;
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  -o-transition: all 300ms;
+  transition: all 300ms;
 }
-/* line 46, ../sass/_layout.scss */
+/* line 45, ../sass/_layout.scss */
 .loading i {
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-perspective: 1000;
   -webkit-backface-visibility: hidden;
 }
-/* line 53, ../sass/_layout.scss */
+/* line 52, ../sass/_layout.scss */
 .loading.active {
   z-index: 100001;
   opacity: 1;
 }
-/* line 57, ../sass/_layout.scss */
+/* line 56, ../sass/_layout.scss */
 .loading.active div {
   -webkit-transform: scale(2);
   -moz-transform: scale(2);
@@ -217,7 +217,7 @@ html, body {
   transform: scale(2);
 }
 
-/* line 64, ../sass/_layout.scss */
+/* line 62, ../sass/_layout.scss */
 .viewport {
   position: absolute;
   height: 100vh;
@@ -234,42 +234,66 @@ html, body {
   -o-transform: translate3d(-80px, 0, 0);
   transform: translate3d(-80px, 0, 0);
   -webkit-user-select: none;
-  -webkit-transition: -webkit-transform 0.2s;
-  -webkit-box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+  -webkit-transition: -webkit-transform 300ms;
+  -webkit-box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
 }
-/* line 82, ../sass/_layout.scss */
+/* line 80, ../sass/_layout.scss */
 .viewport header {
   background-color: #34495e;
   color: white;
+  font-size: 24px;
   height: 50px;
   left: 0;
   opacity: 0;
-  padding: 0;
+  padding-top: 2px;
   position: absolute;
-  text-transform: uppercase;
   text-align: center;
   width: 100%;
   z-index: 2;
-  -webkit-transition: opacity 0.2s;
-  -moz-transition: opacity 0.2s;
-  -o-transition: opacity 0.2s;
-  transition: opacity 0.2s;
+  -webkit-transition: opacity 300ms;
+  -moz-transition: opacity 300ms;
+  -o-transition: opacity 300ms;
+  transition: opacity 300ms;
 }
-/* line 97, ../sass/_layout.scss */
+/* line 95, ../sass/_layout.scss */
 .viewport header nav {
+  color: #2ecc71;
+  font-size: 18px;
   left: 0;
+  padding-left: 6px;
+  padding-top: 8px;
   position: absolute;
-  top: 0;
+  top: 1px;
 }
-/* line 103, ../sass/_layout.scss */
+/* line 104, ../sass/_layout.scss */
+.viewport header nav:before {
+  font-family: FontAwesome;
+  font-size: 30px;
+  font-weight: normal;
+  left: 6px;
+  position: absolute;
+  top: -4px;
+}
+/* line 114, ../sass/_layout.scss */
+.viewport header nav.left {
+  padding-left: 26px;
+}
+/* line 117, ../sass/_layout.scss */
+.viewport header nav.left:before {
+  content: "\f104";
+}
+/* line 123, ../sass/_layout.scss */
 .viewport header aside {
+  color: #2ecc71;
+  font-size: 20px;
+  padding: 6px 12px;
   position: absolute;
   right: 0;
   top: 0;
 }
-/* line 110, ../sass/_layout.scss */
+/* line 133, ../sass/_layout.scss */
 .viewport .content {
   padding: 50px 0 0;
   height: 100vh;
@@ -280,14 +304,14 @@ html, body {
   width: 320px;
   z-index: 1;
 }
-/* line 121, ../sass/_layout.scss */
+/* line 144, ../sass/_layout.scss */
 .viewport .content article {
   background: #ecf0f1;
   height: 100%;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
-/* line 129, ../sass/_layout.scss */
+/* line 152, ../sass/_layout.scss */
 .viewport.active, .viewport.base {
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
@@ -295,11 +319,11 @@ html, body {
   -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-/* line 132, ../sass/_layout.scss */
+/* line 155, ../sass/_layout.scss */
 .viewport.active header, .viewport.base header {
   opacity: 1;
 }
-/* line 137, ../sass/_layout.scss */
+/* line 160, ../sass/_layout.scss */
 .viewport.spawn {
   -webkit-transform: translate3d(345px, 0, 0);
   -moz-transform: translate3d(345px, 0, 0);

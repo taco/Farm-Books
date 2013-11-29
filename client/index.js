@@ -60,12 +60,15 @@ Template.home1.events({
 Template.viewport.events({
   'touchstart [data-action="menu"], click [data-action="menu"]': function() {
     $('#menu').css('z-index', 12);
+  },
+  'swiperight #viewport': function() {
+      console.log('shit shit shit');
   }
 });
 
 Template.viewport.rendered = function() {
   Hammer($('#viewport')).on('swiperight', function() {
-    history.back();
+    //history.back();
     //things
   })
 

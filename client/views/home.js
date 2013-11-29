@@ -8,6 +8,18 @@ Template.home.events({
 	},
 
 	'click article, touchend article': function() {
-		$('.loading').addClass('active');
-	}
+		//$('.loading').addClass('active');
+	},
+
+    'swiperight #viewport': function() {
+        console.log('swiperight');
+    },
+
+    'tap article': function() {
+        console.log('tap article')
+    },
+
+    'swiperight article': function() {
+        console.log('swiperight')
+    }
 });

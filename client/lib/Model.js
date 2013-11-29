@@ -16,8 +16,6 @@ window.Model.prototype = {
     },
 
     init: function (id) {
-        
-
         this.load(id);
 
         if (!this.record) this.record = {};
@@ -29,7 +27,6 @@ window.Model.prototype = {
 
     get: function () {
         if (!this.record) this.init();
-        //if (!this.record.id) this.saveId();
 
         return this.record;
     },
@@ -65,6 +62,11 @@ window.Model.prototype = {
 
         this.record.id = last.id + 1;
         this.update();
+    },
+
+    loadRecord: function(rec) {
+        if (!rec) this.record = Session.get(this.collection()._name);
+        else this.record = rec;
     },
 
     set: function (field, value) {

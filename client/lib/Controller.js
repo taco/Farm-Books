@@ -33,20 +33,34 @@ Controller = {
 		
 
 	},
-	pop: function () {
+	pop: function (timeout) {
 		var $views = $('.viewport:not(.active)'),
-			$pop = $('.viewport.active');
+			$pop = $('.viewport.active'),
+			showLoader;
 
-		$views.last()
-			.addClass('active');
+		console.log('pop that shit!')
 
-		$pop
-			.addClass('spawn')
-			.removeClass('active');
+		showLoader = setTimeout(function () {
+			$('.loading').addClass('active');
+		}, 300);
 
-		setTimeout(function() {
-			$pop.remove();
-		}, c._delay);
+		setTimeout(function () {
+			clearTimeout(showLoader);
+			$('.loading').removeClass('active');
+
+			$views.last()
+				.addClass('active');
+
+			$pop
+				.addClass('spawn')
+				.removeClass('active');
+
+			setTimeout(function() {
+				$pop.remove();
+			}, c._delay);	
+		}, timeout || 1)
+
+		
 
 	},
 
