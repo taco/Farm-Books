@@ -64,6 +64,11 @@ window.Model.prototype = {
         this.update();
     },
 
+    archive: function() {
+        this.record.archived = true;
+        return this.update();  
+    },
+
     loadRecord: function(rec) {
         if (!rec) this.record = Session.get(this.collection()._name);
         else this.record = rec;
@@ -114,7 +119,8 @@ window.Transaction = function () {
         'amount',
         'date',
         'category',
-        'description'
+        'description',
+        'archived'
     ]
 };
 

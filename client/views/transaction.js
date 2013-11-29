@@ -20,12 +20,15 @@ var touchstart,
     touchmove,
     start,
     move,
-    lastTouchevent = new Date();
+    lastTouchevent = new Date(),
+    dragging = false,
+    draggedX = 0,
+    original3d;
 
 /* TRANSACTION GRID */
 
 Template.transactions.transactions = function () {
-    return Transactions.find();
+    return Transactions.find({archived: {$ne: true}});
 };
 
 Template.transactions.events({
@@ -42,27 +45,84 @@ Template.transactions.events({
         }
     },
     'touchmove': function(e) {
+        if (dragging) e.preventDefault();
         touchmove = e;
-        console.log('stop', e.touches[0].clientY)
         move = {
             x: e.touches[0].clientX,
             y: e.touches[0].clientY
         }
     },
-    'touchend [data-id], click [data-id]': function(e) {
-        if (checkTouchend(e)) return;
+    'touchmove [data-id]': function(e) {
+        var delta;
+
+        if (!dragging) {
+            dragging = Math.abs(start.y - move.y) < 10 && Math.abs(start.x - move.x) > 20;
+            if (!dragging) return;
+        }
+
+        //e.preventDefault();
+        //e.stopPropogation();
+
+        if (!original3d) {
+            original3d = getTransform(e.currentTarget);
+        }
+
+        draggedX = original3d[0] + move.x - start.x;
+
+        $(e.currentTarget).css('-webkit-transform', 'translate3d(' + draggedX + 'px,0,0)');
+
+    },
+    'touchend .transaction, click .Transaction': function(e) {
         var $item = $(e.currentTarget),
             record = Transactions.findOne($item.data('id'));
 
+        original3d = null;
+        dragging = false;
+
+        e.preventDefault();
+        if (checkTouchend(e)) {
+
+            $('.transaction.active').removeClass('active');
+
+            if (draggedX < -100)
+                $item.addClass('active')
+            else
+                $item.removeClass('active');
+
+            $item.css('-webkit-transform', '');
+            draggedX = 0;
+            return;
+        }
+        if ($item.hasClass('active')) {
+            $item.removeClass('active');
+            return;
+        }
+        
+
         Session.set('transaction', record);
-        Controller.push(Template.transactionEditor, 250);
+        Controller.push(Template.transactionEditor);
+    },
+    'touchend .archive, click .archive': function(e) {
+        
+        if (checkTouchend(e)) return;
+        e.preventDefault();
+        
+
+        var $item = $(e.currentTarget),
+            record = Transactions.findOne($item.data('id'));
+
+        t.loadRecord(record);
+        t.archive();
     },
     'touchend nav, click nav': function(e) {
         if (checkTouchend(e)) return;
+        e.preventDefault();
         Controller.pop();
     },
     'touchend aside, click aside': function(e) {
         if (checkTouchend(e)) return;
+        e.preventDefault();
+
         var t = new Transaction(),
             r = t.insert();
 
@@ -94,8 +154,10 @@ Template.transactionEditor.events({
     
     'touchend aside, click aside': function (e) {
         var id;
+
+        e.preventDefault();
         
-        if (checkEventBuffer()) return;
+        //if (checkEventBuffer()) return;
 
         console.log('attempt save');
 
@@ -107,11 +169,12 @@ Template.transactionEditor.events({
         });
 
         t.save();
-        Controller.pop(250);
+        Controller.pop();
     },
 
     'touchend nav, click nav': function(e) {
-        Controller.pop(250);
+        e.preventDefault();
+        Controller.pop();
     }
 });
 
@@ -128,5 +191,15 @@ var checkEventBuffer = function() {
 
     lastTouchevent = d;
     return false;
+}
+
+function getTransform(el) {
+    var results = $(el).css('-webkit-transform').match(/matrix(?:(3d)\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))(?:, (\d+)), \d+\)|\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))\))/)
+
+    if(!results) return [0, 0, 0];
+    if(results[1] == '3d') return results.slice(2,5);
+
+    results.push(0);
+    return results.slice(5, 8);
 }
 

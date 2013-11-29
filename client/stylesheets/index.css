@@ -111,29 +111,74 @@
   padding: 0;
 }
 /* line 7, ../sass/_transactions.scss */
-.transaction-grid .transaction {
+.transaction-grid li {
+  background-color: #ecf0f1;
   border-bottom: 1px solid #bdc3c7;
   list-style: none;
+  position: relative;
+}
+/* line 13, ../sass/_transactions.scss */
+.transaction-grid li .transaction {
+  background-color: #ecf0f1;
+  min-height: 70px;
+  padding: 6px 8px;
+  position: relative;
+  z-index: 5;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: -webkit-transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+}
+/* line 27, ../sass/_transactions.scss */
+.transaction-grid li .transaction.active {
+  -webkit-transform: translate3d(-180px, 0, 0);
+  -moz-transform: translate3d(-180px, 0, 0);
+  -ms-transform: translate3d(-180px, 0, 0);
+  -o-transform: translate3d(-180px, 0, 0);
+  transform: translate3d(-180px, 0, 0);
+}
+/* line 32, ../sass/_transactions.scss */
+.transaction-grid li .actions, .transaction-grid li .archive {
+  background-color: #bdc3c7;
+  color: white;
+  font-size: 16px;
+  height: 100%;
+  padding-left: 30px;
+  position: absolute;
+  right: 90px;
+  text-align: center;
+  top: 0;
+  width: 120px;
+}
+/* line 45, ../sass/_transactions.scss */
+.transaction-grid li .archive {
+  background-color: #e74c3c;
+  right: 0px;
+  width: 90px;
 }
 
-/* line 13, ../sass/_transactions.scss */
+/* line 54, ../sass/_transactions.scss */
 .transaction-editor {
   padding: 10px 15px;
 }
 
-/* line 23, ../sass/_transactions.scss */
+/* line 64, ../sass/_transactions.scss */
 .form-group label {
   font-size: 18px !important;
 }
-/* line 27, ../sass/_transactions.scss */
+/* line 68, ../sass/_transactions.scss */
 .form-group input {
   font-size: 18px !important;
 }
-/* line 30, ../sass/_transactions.scss */
+/* line 71, ../sass/_transactions.scss */
 .form-group input[type="number"] {
   text-align: right;
 }
-/* line 35, ../sass/_transactions.scss */
+/* line 76, ../sass/_transactions.scss */
 .form-group textarea {
   font-size: 18px !important;
   height: 260px !important;

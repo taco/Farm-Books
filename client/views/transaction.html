@@ -14,13 +14,17 @@
 
                 <ul class="transaction-grid">
                 {{#each transactions}}
-                    <li class="transaction" data-id="{{_id}}">
-                        <div class="id">{{_id}} #{{id}}</div>
-                        <div class="vendor">{{vendor}}</div>
-                        <div class="date">{{date}}</div>
-                        <div class="category">{{category}}</div>
-                        <div class="amount">{{amount}}</div>
-                        <div class="description">{{description}}</div>
+                    <li>
+                        <div class="transaction" data-id="{{_id}}">
+                            <div class="id">{{_id}} #{{id}}</div>
+                            <div class="vendor">{{vendor}}</div>
+                            <div class="date">{{date}}</div>
+                            <div class="category">{{category}}</div>
+                            <div class="amount">{{amount}}</div>
+                            <div class="description">{{description}}</div>
+                        </div>
+                        <div class="archive" data-id="{{_id}}">Archive</div>
+                        <div class="actions">More</div>
                     </li>
                 {{/each}}
                 </ul>

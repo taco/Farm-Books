@@ -4,9 +4,50 @@
     margin: 0;
     padding: 0;
 
-    .transaction {
+    li {
+        background-color: $color-clouds;
         border-bottom: 1px solid $color-silver;
         list-style: none;
+        position: relative;
+
+        .transaction {
+
+            background-color: $color-clouds;
+            min-height: 70px;
+            padding: 6px 8px;
+            position: relative;
+            z-index: 5;
+
+            @include transform(translate3d(0,0,0));
+            -webkit-transition: -webkit-transform 500ms $ease-out-back;
+
+            -webkit-perspective: 1000;
+            -webkit-backface-visibility: hidden;
+
+            &.active {
+                @include transform(translate3d(-180px,0,0));
+            }
+        }
+
+        .actions, .archive {
+            background-color: $color-silver;
+            color: white;
+            font-size: 16px;
+            height: 100%;
+            padding-left: 30px;
+            position: absolute;
+            right: 90px;
+            text-align: center;
+            top: 0;
+            width: 120px;
+        }
+
+        .archive {
+            background-color: $color-alizarin;
+            right: 0px;
+            width: 90px;
+        }
+
     }
 }
 
