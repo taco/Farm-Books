@@ -15,7 +15,7 @@
                 <ul class="transaction-grid">
                 {{#each transactions}}
                     <li>
-                        <div class="transaction" data-id="{{_id}}" data-state="incomplete" data-receipts="true">
+                        <div class="transaction" data-id="{{_id}}" data-state="{{state this}}" data-receipts="true">
                             <div class="row">
                                 <div class="vendor">{{vendor}}</div>
                                 <div class="amount">{{formatCurrency amount}}</div>
@@ -76,7 +76,12 @@
 
                         <div class="form-group">
                             <label for="inputCategory">Category</label>
-                            <input type="text" id="inputCategory" data-bind="category" value="{{category}}" class="form-control input-sm1">
+                            <!-- <input type="text" id="inputCategory" data-bind="category" value="{{category}}" class="form-control input-sm1"> -->
+                            <select id="inputCategory" data-bind="category" value="{{category}}" class="form-control input-sm1">
+                                {{#each categories}}
+                                    <option>{{name}}</option>
+                                {{/each}}
+                            </select>
                         </div>
 
                         <div class="form-group">

@@ -78,7 +78,7 @@ Template.transactions.events({
         $(e.currentTarget).css('-webkit-transform', 'translate3d(' + draggedX + 'px,0,0)');
 
     },
-    'touchend .transaction, click .Transaction': function(e) {
+    'touchend .transaction': function(e) {
         var $item = $(e.currentTarget),
             record = Transactions.findOne($item.data('id'));
 
@@ -107,6 +107,13 @@ Template.transactions.events({
 
         Session.set('transaction', record);
         Controller.push(Template.transactionEditor);
+    },
+    'click .transaction': function(e) {
+        var $item = $(e.currentTarget),
+            record = Transactions.findOne($item.data('id'));
+
+        Session.set('transaction', record);
+        Controller.push(Template.transactionEditor);    
     },
     'touchend .archive, click .archive': function(e) {
         
@@ -142,6 +149,12 @@ Template.transactions.events({
 })
 
 Template.transactions.helpers({
+    state: function(t) {
+        if (t.vendor && (t.amount || t.amount === 0) && t.date && t.category)
+            return 'complete';
+
+        return 'incomplete';
+    },
     formatCurrency1: function(value) {
         var ret,
             split;
@@ -171,6 +184,12 @@ Template.transactions.helpers({
 })
 
 /* TRANSACTION EDITOR */
+
+Template.transactionEditor.categories = function () {
+    var cats = Categories.find({archived: {$ne: true}}, {sort: {index: 1}});
+    debugger;
+    return cats;
+};
 
 Template.transactionEditor.helpers({
     saveText: function () {

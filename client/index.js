@@ -1,5 +1,6 @@
 Subscriptions = {
-  transactions: Meteor.subscribe('transactions')
+  transactions: Meteor.subscribe('transactions'),
+  categories: Meteor.subscribe('categories')
 };
 
 // Router.configure({
