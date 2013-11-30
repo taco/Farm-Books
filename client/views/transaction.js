@@ -28,7 +28,7 @@ var touchstart,
 /* TRANSACTION GRID */
 
 Template.transactions.transactions = function () {
-    return Transactions.find({archived: {$ne: true}});
+    return Transactions.find({archived: {$ne: true}}, {sort: {date: -1}});
 };
 
 Template.transactions.events({
@@ -68,6 +68,12 @@ Template.transactions.events({
         }
 
         draggedX = original3d[0] + move.x - start.x;
+
+        if (draggedX > 0)
+            draggedX = 0;
+
+        if (draggedX < -180)
+            draggedX = (draggedX + 180) / 2 - 180;
 
         $(e.currentTarget).css('-webkit-transform', 'translate3d(' + draggedX + 'px,0,0)');
 
@@ -133,6 +139,35 @@ Template.transactions.events({
     'tacotest nav': function(e) {
         console.log('tacotest', e)
     }
+})
+
+Template.transactions.helpers({
+    formatCurrency1: function(value) {
+        var ret,
+            split;
+
+        if (!value || isNaN(value)) return '$ 0.00';
+
+        ret = value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        split = ret.split('.');
+
+        if (split.length < 2)
+            ret += '.00';
+        else {
+            switch (split[1].length) {
+                case 0:
+                    ret += '00';
+                    break;
+                case 1:
+                    ret += '0'
+                    break;
+            }
+        }
+
+        ret = '$ ' + ret;
+
+        return ret;
+    } 
 })
 
 /* TRANSACTION EDITOR */

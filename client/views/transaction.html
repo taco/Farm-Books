@@ -15,13 +15,19 @@
                 <ul class="transaction-grid">
                 {{#each transactions}}
                     <li>
-                        <div class="transaction" data-id="{{_id}}">
-                            <div class="id">{{_id}} #{{id}}</div>
-                            <div class="vendor">{{vendor}}</div>
-                            <div class="date">{{date}}</div>
-                            <div class="category">{{category}}</div>
-                            <div class="amount">{{amount}}</div>
-                            <div class="description">{{description}}</div>
+                        <div class="transaction" data-id="{{_id}}" data-state="incomplete" data-receipts="true">
+                            <div class="row">
+                                <div class="vendor">{{vendor}}</div>
+                                <div class="amount">{{formatCurrency amount}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="id">#{{id}}</div>
+                                <div class="category">{{category}}</div>
+                                <div class="date">{{parseReadableDate date}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="description">{{description}}</div>
+                            </div>
                         </div>
                         <div class="archive" data-id="{{_id}}">Archive</div>
                         <div class="actions">More</div>
@@ -65,7 +71,7 @@
 
                         <div class="form-group">
                             <label for="inputDate">Date</label>
-                            <input type="date" id="inputDate" data-bind="date" data-type="date" value="{{parseDate date}}" class="form-control input-sm1">
+                            <input type="date" id="inputDate" data-bind="date" data-type="date" value="{{date}}" class="form-control input-sm1">
                         </div>
 
                         <div class="form-group">

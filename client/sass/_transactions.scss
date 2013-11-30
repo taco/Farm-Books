@@ -14,7 +14,7 @@
 
             background-color: $color-clouds;
             min-height: 70px;
-            padding: 6px 8px;
+            padding: 6px 30px;
             position: relative;
             z-index: 5;
 
@@ -24,8 +24,74 @@
             -webkit-perspective: 1000;
             -webkit-backface-visibility: hidden;
 
+            &:after {
+                color: transparentize($color-wet-asphalt, 0.5);
+                content: $fa-var-angle-right;
+                font-family: FontAwesome;
+                font-size: 26px;
+                position: absolute;
+                right: 10px;
+                top: -6px;
+            }
+
+            &[data-state="incomplete"]:before {
+                background-color: $color-alizarin;
+                content: "";
+                height: 10px;
+                left: 15px;
+                position: absolute;
+                top: 11px;
+                width: 10px;
+                z-index: 1;
+
+                @include border-radius(8px);
+
+            }
+
             &.active {
                 @include transform(translate3d(-180px,0,0));
+            }
+
+            .row {
+                display: -webkit-flex;
+                -webkit-align-items: baseline;
+                -webkit-flex-wrap: nowrap;
+
+                & > div {
+                    margin-left: 3px;
+                    margin-right: 3px;
+                    line-height: 1.25em;
+                }
+
+                .id {
+                    font-weight: bold;
+                }
+
+                .amount {
+                    font-size: 16px;
+                }
+
+                .date {
+                    color: transparentize($color-wet-asphalt, 0.5);
+                }
+
+                .vendor {
+                    font-size: 18px;
+                    font-weight: bold;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    -webkit-flex: 1;
+                }
+
+                .category {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    -webkit-flex: 1;
+                }
+
+                .description {
+                    color: transparentize($color-wet-asphalt, 0.5);
+                }
             }
         }
 
@@ -39,7 +105,7 @@
             right: 90px;
             text-align: center;
             top: 0;
-            width: 120px;
+            width: 90px;
         }
 
         .archive {

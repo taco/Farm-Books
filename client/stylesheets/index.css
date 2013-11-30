@@ -121,7 +121,7 @@
 .transaction-grid li .transaction {
   background-color: #ecf0f1;
   min-height: 70px;
-  padding: 6px 8px;
+  padding: 6px 30px;
   position: relative;
   z-index: 5;
   -webkit-transform: translate3d(0, 0, 0);
@@ -134,6 +134,32 @@
   -webkit-backface-visibility: hidden;
 }
 /* line 27, ../sass/_transactions.scss */
+.transaction-grid li .transaction:after {
+  color: rgba(52, 73, 94, 0.5);
+  content: "\f105";
+  font-family: FontAwesome;
+  font-size: 26px;
+  position: absolute;
+  right: 10px;
+  top: -6px;
+}
+/* line 37, ../sass/_transactions.scss */
+.transaction-grid li .transaction[data-state="incomplete"]:before {
+  background-color: #e74c3c;
+  content: "";
+  height: 10px;
+  left: 15px;
+  position: absolute;
+  top: 11px;
+  width: 10px;
+  z-index: 1;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
+}
+/* line 51, ../sass/_transactions.scss */
 .transaction-grid li .transaction.active {
   -webkit-transform: translate3d(-180px, 0, 0);
   -moz-transform: translate3d(-180px, 0, 0);
@@ -141,7 +167,49 @@
   -o-transform: translate3d(-180px, 0, 0);
   transform: translate3d(-180px, 0, 0);
 }
-/* line 32, ../sass/_transactions.scss */
+/* line 55, ../sass/_transactions.scss */
+.transaction-grid li .transaction .row {
+  display: -webkit-flex;
+  -webkit-align-items: baseline;
+  -webkit-flex-wrap: nowrap;
+}
+/* line 60, ../sass/_transactions.scss */
+.transaction-grid li .transaction .row > div {
+  margin-left: 3px;
+  margin-right: 3px;
+  line-height: 1.25em;
+}
+/* line 66, ../sass/_transactions.scss */
+.transaction-grid li .transaction .row .id {
+  font-weight: bold;
+}
+/* line 70, ../sass/_transactions.scss */
+.transaction-grid li .transaction .row .amount {
+  font-size: 16px;
+}
+/* line 74, ../sass/_transactions.scss */
+.transaction-grid li .transaction .row .date {
+  color: rgba(52, 73, 94, 0.5);
+}
+/* line 78, ../sass/_transactions.scss */
+.transaction-grid li .transaction .row .vendor {
+  font-size: 18px;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-flex: 1;
+}
+/* line 86, ../sass/_transactions.scss */
+.transaction-grid li .transaction .row .category {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-flex: 1;
+}
+/* line 92, ../sass/_transactions.scss */
+.transaction-grid li .transaction .row .description {
+  color: rgba(52, 73, 94, 0.5);
+}
+/* line 98, ../sass/_transactions.scss */
 .transaction-grid li .actions, .transaction-grid li .archive {
   background-color: #bdc3c7;
   color: white;
@@ -152,33 +220,33 @@
   right: 90px;
   text-align: center;
   top: 0;
-  width: 120px;
+  width: 90px;
 }
-/* line 45, ../sass/_transactions.scss */
+/* line 111, ../sass/_transactions.scss */
 .transaction-grid li .archive {
   background-color: #e74c3c;
   right: 0px;
   width: 90px;
 }
 
-/* line 54, ../sass/_transactions.scss */
+/* line 120, ../sass/_transactions.scss */
 .transaction-editor {
   padding: 10px 15px;
 }
 
-/* line 64, ../sass/_transactions.scss */
+/* line 130, ../sass/_transactions.scss */
 .form-group label {
   font-size: 18px !important;
 }
-/* line 68, ../sass/_transactions.scss */
+/* line 134, ../sass/_transactions.scss */
 .form-group input {
   font-size: 18px !important;
 }
-/* line 71, ../sass/_transactions.scss */
+/* line 137, ../sass/_transactions.scss */
 .form-group input[type="number"] {
   text-align: right;
 }
-/* line 76, ../sass/_transactions.scss */
+/* line 142, ../sass/_transactions.scss */
 .form-group textarea {
   font-size: 18px !important;
   height: 260px !important;
