@@ -186,10 +186,13 @@ Template.transactions.helpers({
 /* TRANSACTION EDITOR */
 
 Template.transactionEditor.categories = function () {
-    var cats = Categories.find({archived: {$ne: true}}, {sort: {index: 1}});
-    debugger;
-    return cats;
+    return Categories.find({archived: {$ne: true}}, {sort: {index: 1}});
 };
+
+Template.transactionEditor.selected = function(a, b) {
+    console.log('a,b', a,b);
+    return a === b;
+}
 
 Template.transactionEditor.helpers({
     saveText: function () {
@@ -201,6 +204,18 @@ Template.transactionEditor.helpers({
     parseDate: function (d) {
         if (!d || !d.getMonth) d = new Date();
         return (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear();
+    },
+    categoryList: function(val) {
+        var cats = Categories.find({archived: {$ne: true}}, {sort: {index: 1}}).fetch(),
+            ret = [];
+
+        _.each(cats, function(cat) {
+            ret.push('<option ');
+            if (cat.name === val) ret.push('selected');
+            ret.push('>' + cat.name + '</option>');
+        });
+
+        return new Handlebars.SafeString(ret.join(''));
     }
 })
 

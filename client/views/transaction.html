@@ -78,9 +78,7 @@
                             <label for="inputCategory">Category</label>
                             <!-- <input type="text" id="inputCategory" data-bind="category" value="{{category}}" class="form-control input-sm1"> -->
                             <select id="inputCategory" data-bind="category" value="{{category}}" class="form-control input-sm1">
-                                {{#each categories}}
-                                    <option>{{name}}</option>
-                                {{/each}}
+                                {{categoryList category}}
                             </select>
                         </div>
 

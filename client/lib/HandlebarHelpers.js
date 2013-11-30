@@ -62,3 +62,16 @@ Handlebars.registerHelper('parseReadableDate', function(val) {
     return ret;
 
 })
+
+Handlebars.registerHelper('categoryList1', function(val) {
+    var cats = Categories.find({archived: {$ne: true}}, {sort: {index: 1}}).fetch(),
+        ret = [];
+
+    _.each(cats, function(cat) {
+        ret.push('<option ');
+        if (cat.name === val) ret.push('selected');
+        ret.push('>' + cat.name + '</option>');
+    });
+
+    return new Handlebars.SafeString(ret.join(''));
+})
